@@ -7,21 +7,18 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class User {
+export class Lesson {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ unique: true })
-  username: string;
-
   @Column()
-  password: string;
+  title: string;
 
-  @Column({ unique: true })
-  email: string;
+  @Column('text')
+  description: string;
 
-  @Column({ nullable: true })
-  fullName: string;
+  @Column({ type: 'enum', enum: ['beginner', 'intermediate', 'advanced'] })
+  level: 'beginner' | 'intermediate' | 'advanced';
 
   @CreateDateColumn()
   createdAt: Date;
